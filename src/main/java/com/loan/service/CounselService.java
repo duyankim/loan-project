@@ -1,7 +1,6 @@
 package com.loan.service;
 
-import com.loan.dto.counselDTO.Request;
-import com.loan.dto.counselDTO.Response;
+import com.loan.dto.CounselDTO.*;
 
 public interface CounselService {
 
