@@ -10,5 +10,9 @@ public interface CounselService {
     // 상담 조회 기능
     Response get(Long counselId);
 
+    // 상담 수정 기능
     Response update(Long counselId, Request request);
+    
+    // 상담 삭제 기능
+    void delete(Long counselId);
 }
