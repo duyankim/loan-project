@@ -104,7 +104,7 @@ public class CounselServiceTest {
     }
 
     @Test
-    void Should_DeletedCounselEntit_When_RequestDeleteExistCounselInfo() {
+    void Should_DeletedCounselEntity_When_RequestDeleteExistCounselInfo() {
         Long targetId = 1L;
 
         Counsel entity = Counsel.builder()
