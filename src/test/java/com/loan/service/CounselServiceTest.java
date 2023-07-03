@@ -30,7 +30,7 @@ public class CounselServiceTest {
     private ModelMapper modelMapper;
 
     @Test
-    void Should_ReturnResponseOfNewCounselEntity_When_RequestCounsel() {
+    void 대출상담_신규요청시_신규_상담엔티티를_반환해야_한다() {
         Counsel entity = Counsel.builder()
                 .name("member A")
                 .cellPhone("010-1234-5678")
@@ -38,7 +38,7 @@ public class CounselServiceTest {
                 .memo("아자아자")
                 .zipCode("12345")
                 .address("서울시 퇴계로")
-                .addressDetail("36 1301호")
+                .addressDetail("30 1301호")
                 .build();
 
         Request request = Request.builder()
@@ -47,8 +47,8 @@ public class CounselServiceTest {
                 .email("aaa@bbb.com")
                 .memo("아자아자")
                 .zipCode("12345")
-                .address("서울시 퇴계로")
-                .addressDetail("36 1301호")
+                .address("서울시 소월로")
+                .addressDetail("4 1004호")
                 .build();
 
         when(counselRepository.save(ArgumentMatchers.any(Counsel.class))).thenReturn(entity);
@@ -58,7 +58,7 @@ public class CounselServiceTest {
     }
 
     @Test
-    void Should_ReturnResponseOfExistCounselEntity_When_RequestExistCounselId() {
+    void 기존_대출상담_요청시_기존의_상담엔티티를_반환해야_한다() {
         Long findId = 1L;
 
         Counsel entity = Counsel.builder()
@@ -73,7 +73,7 @@ public class CounselServiceTest {
     }
 
     @Test
-    void Should_ThrowException_When_RequestNotExistCounselId() {
+    void 존재하지_않는_대출상담건에_대해_요청시_에러를_반환해야_한다() {
         Long findId = 2L;
 
         when(counselRepository.findById(findId)).thenThrow(new BaseException(ResultType.SYSTEM_ERROR));
@@ -82,7 +82,7 @@ public class CounselServiceTest {
     }
 
     @Test
-    void Should_ReturnUpdatedResponseOfExistCounselEntity_When_RequestUpdateExistCounselInfo() {
+    void 기존_대출상단에_수정시_기존_대출상담_엔티티를_수정하여_반환해야_한다() {
         Long findId = 1L;
 
         Counsel entity = Counsel.builder()
@@ -104,7 +104,7 @@ public class CounselServiceTest {
     }
 
     @Test
-    void Should_DeletedCounselEntity_When_RequestDeleteExistCounselInfo() {
+    void 대출상담_삭제요청시_상담엔티티를_삭제해야_한다() {
         Long targetId = 1L;
 
         Counsel entity = Counsel.builder()

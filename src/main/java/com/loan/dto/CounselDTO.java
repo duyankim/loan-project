@@ -9,6 +9,7 @@ public class CounselDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter
+    @Setter
     @Builder
     public static class Request {
 
