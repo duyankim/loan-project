@@ -19,7 +19,7 @@ public class ApplicationController extends AbstractController{
         return ok(applicationService.create(request));
     }
 
-    @GetMapping("/{applicaionId}")
+    @GetMapping("/{applicationId}")
     public ResponseDTO<Response> get(@PathVariable long applicaionId) {
         return ok(applicationService.get(applicaionId));
     }
