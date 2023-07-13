@@ -91,4 +91,20 @@ public class ApplicationServiceTest {
         assertThat(actual.getApplicationId()).isSameAs(findId);
         assertThat(actual.getDesireAmount()).isSameAs(request.getDesireAmount());
     }
+
+    @Test
+    void 존재하는_대출신청엔티티를_삭제요청시_삭제할_수_있다() {
+        Long targetId = 1L;
+
+        Application entity = Application.builder()
+                        .applicationId(1L)
+                        .build();
+
+        when(applicationRepository.save(ArgumentMatchers.any(Application.class))).thenReturn(entity);
+        when(applicationRepository.findById(targetId)).thenReturn(Optional.ofNullable(entity));
+
+        applicationService.delete(targetId);
+
+        assertThat(entity.getIsDeleted()).isSameAs(true);
+    }
 }
