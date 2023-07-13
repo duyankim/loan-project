@@ -11,8 +11,8 @@ public class ApplicationDTO implements Serializable {
     @NoArgsConstructor
     @AllArgsConstructor
     @Getter
-    @Builder
     @Setter
+    @Builder
     public static class Request {
 
         private String name;

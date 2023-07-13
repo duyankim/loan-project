@@ -69,4 +69,26 @@ public class ApplicationServiceTest {
 
         assertThat(actual.getApplicationId()).isSameAs(findId);
     }
+
+    @Test
+    void 존재하는_대출신청정보에_대한_수정을_하면_기존의_대출신청엔티티를_반환한다() {
+        Long findId = 1L;
+
+        Application entity = Application.builder()
+                .applicationId(1L)
+                .desireAmount(BigDecimal.valueOf(3000000))
+                .build();
+
+        Request request = Request.builder()
+                .desireAmount(BigDecimal.valueOf(300000))
+                .build();
+
+        when(applicationRepository.save(ArgumentMatchers.any(Application.class))).thenReturn(entity);
+        when(applicationRepository.findById(findId)).thenReturn(Optional.ofNullable(entity));
+
+        Response actual = applicationService.update(findId, request);
+
+        assertThat(actual.getApplicationId()).isSameAs(findId);
+        assertThat(actual.getDesireAmount()).isSameAs(request.getDesireAmount());
+    }
 }
